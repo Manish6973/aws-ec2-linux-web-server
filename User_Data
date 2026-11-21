@@ -1,0 +1,10 @@
+------Amazon Linux Machine------ 
+  -> Amazon Machine Image 
+  -> Instance Type :- t3.micro
+ -------User data-----
+#!/bin/bash
+yum update -y
+yum install httpd -y
+systemctl start httpd
+systemctl enable httpd
+cd /var/www/html/index.html
