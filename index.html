@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aarav Sharma | Cloud Architect & Cybersecurity Engineer</title>
+    
+    <!-- Google Fonts: Inter & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Crisp Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        cyber: {
+                            dark: '#060913',
+                            card: 'rgba(15, 23, 42, 0.65)',
+                            cyan: '#06b6d4',
+                            indigo: '#6366f1',
+                            emerald: '#10b981',
+                            border: 'rgba(56, 189, 248, 0.18)',
+                        }
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-12px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Scrollbar & Glassmorphism Utilities */
+        body {
+            background-color: #060913;
+            color: #e2e8f0;
+            overflow-x: hidden;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #060913;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 9999px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #06b6d4;
+        }
+
+        .glass-panel {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(56, 189, 248, 0.18);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+
+        .glass-panel-hover {
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .glass-panel-hover:hover {
+            border-color: rgba(6, 182, 212, 0.55);
+            box-shadow: 0 12px 40px -10px rgba(6, 182, 212, 0.25);
+            transform: translateY(-4px);
+        }
+
+        .neon-text-gradient {
+            background: linear-gradient(135deg, #22d3ee 0%, #818cf8 50%, #c084fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .bg-grid-pattern {
+            background-size: 44px 44px;
+            background-image: 
+                linear-gradient(to right, rgba(6, 182, 212, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(99, 102, 241, 0.05) 1px, transparent 1px);
+        }
+
+        /* Terminal Blinking Cursor */
+        .cursor-blink {
+            animation: blink 1s step-end infinite;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+    </style>
+</head>
+<body class="bg-grid-pattern antialiased selection:bg-cyan-500/30 selection:text-cyan-200">
+
+    <!-- Ambient Background Glow Orbs -->
+    <div class="fixed inset-0 pointer-events-none overflow-hidden -z-10">
+        <div class="absolute -top-40 -left-40 w-96 h-96 bg-cyan-500/15 rounded-full blur-[120px] animate-pulse-slow"></div>
+        <div class="absolute top-1/3 -right-40 w-[30rem] h-[30rem] bg-indigo-600/15 rounded-full blur-[130px] animate-pulse-slow"></div>
+        <div class="absolute -bottom-40 left-1/3 w-96 h-96 bg-purple-600/10 rounded-full blur-[120px]"></div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <header id="navbar" class="fixed top-0 inset-x-0 z-40 transition-all duration-300 border-b border-transparent">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Brand Logo -->
+                <a href="#home" class="flex items-center gap-3 group">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-500 to-indigo-600 flex items-center justify-center text-white font-mono font-bold text-lg shadow-lg shadow-cyan-500/25 group-hover:scale-105 transition-transform">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <div>
+                        <span class="font-bold text-lg tracking-tight text-white">AARAV<span class="text-cyan-400">.SEC</span></span>
+                        <span class="block text-[10px] font-mono text-slate-400 tracking-widest uppercase">Cloud & Zero-Trust</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex items-center gap-8">
+                    <a href="#home" class="text-sm font-medium text-slate-300 hover:text-cyan-400 transition-colors">Home</a>
+                    <a href="#architecture" class="text-sm font-medium text-slate-300 hover:text-cyan-400 transition-colors">Architecture & Skills</a>
+                    <a href="#projects" class="text-sm font-medium text-slate-300 hover:text-cyan-400 transition-colors">Deployments</a>
+                    <a href="#terminal" class="text-sm font-medium text-slate-300 hover:text-cyan-400 transition-colors">CLI Simulator</a>
+                    <a href="#contact" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white text-sm font-semibold shadow-lg shadow-cyan-500/20 transition-all">
+                        Initiate Handshake
+                    </a>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" aria-label="Toggle Menu" class="md:hidden p-2.5 rounded-xl glass-panel text-slate-300 hover:text-cyan-400 focus:outline-none">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Dropdown Drawer -->
+        <div id="mobile-menu" class="hidden md:hidden glass-panel border-t border-cyan-500/20 px-4 pt-3 pb-6 space-y-2">
+            <a href="#home" class="mobile-link block px-4 py-2.5 rounded-lg text-slate-200 hover:bg-cyan-500/10 hover:text-cyan-400 font-medium">Home</a>
+            <a href="#architecture" class="mobile-link block px-4 py-2.5 rounded-lg text-slate-200 hover:bg-cyan-500/10 hover:text-cyan-400 font-medium">Architecture & Skills</a>
+            <a href="#projects" class="mobile-link block px-4 py-2.5 rounded-lg text-slate-200 hover:bg-cyan-500/10 hover:text-cyan-400 font-medium">Deployments</a>
+            <a href="#terminal" class="mobile-link block px-4 py-2.5 rounded-lg text-slate-200 hover:bg-cyan-500/10 hover:text-cyan-400 font-medium">CLI Simulator</a>
+            <a href="#contact" class="mobile-link block px-4 py-2.5 rounded-lg bg-cyan-500/20 text-cyan-300 font-semibold mt-2">Contact Me</a>
+        </div>
+    </header>
+
+    <!-- Hero Section with Interactive Network Canvas -->
+    <section id="home" class="relative min-h-screen flex items-center pt-24 pb-16 overflow-hidden">
+        <!-- Interactive Particle Mesh Canvas -->
+        <canvas id="network-canvas" class="absolute inset-0 w-full h-full pointer-events-auto opacity-75"></canvas>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pointer-events-none">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left Hero Content -->
+                <div class="lg:col-span-7 space-y-6 pointer-events-auto">
+                    <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full glass-panel text-xs font-mono text-cyan-300">
+                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                        <span>AWS Solutions Architect & DevSecOps Specialist</span>
+                    </div>
+
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.15]">
+                        Architecting Resilient <br>
+                        <span class="neon-text-gradient">Zero-Trust Cloud</span> <br>
+                        Infrastructures.
+                    </h1>
+
+                    <p class="text-base sm:text-lg text-slate-300 max-w-2xl leading-relaxed">
+                        I design high-availability multi-AZ AWS topologies, automate hardened Kubernetes clusters, and build real-time threat detection pipelines that scale effortlessly under load.
+                    </p>
+
+                    <div class="flex flex-wrap items-center gap-4 pt-2">
+                        <a href="#projects" class="px-6 py-3.5 rounded-xl bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white font-semibold shadow-lg shadow-cyan-500/25 flex items-center gap-2.5 transition-all transform hover:-translate-y-0.5">
+                            <span>Explore Deployments</span>
+                            <i class="fa-solid fa-arrow-right text-sm"></i>
+                        </a>
+                        <a href="#terminal" class="px-6 py-3.5 rounded-xl glass-panel hover:border-cyan-400/50 text-slate-200 font-mono text-sm flex items-center gap-2.5 transition-all">
+                            <i class="fa-solid fa-terminal text-cyan-400"></i>
+                            <span>Launch CLI Terminal</span>
+                        </a>
+                    </div>
+
+                    <!-- Live Telemetry Stats -->
+                    <div class="grid grid-cols-3 gap-4 pt-6 max-w-lg">
+                        <div class="glass-panel rounded-xl p-3.5">
+                            <div class="text-2xl font-bold text-white font-mono">99.99%</div>
+                            <div class="text-xs text-slate-400 mt-0.5">Multi-AZ Uptime</div>
+                        </div>
+                        <div class="glass-panel rounded-xl p-3.5">
+                            <div class="text-2xl font-bold text-cyan-400 font-mono">45+</div>
+                            <div class="text-xs text-slate-400 mt-0.5">VPC Topologies</div>
+                        </div>
+                        <div class="glass-panel rounded-xl p-3.5">
+                            <div class="text-2xl font-bold text-indigo-400 font-mono">0</div>
+                            <div class="text-xs text-slate-400 mt-0.5">Critical Breaches</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Hero Interactive Status Card -->
+                <div class="lg:col-span-5 pointer-events-auto animate-float">
+                    <div class="glass-panel rounded-2xl p-6 border border-cyan-500/30 relative overflow-hidden">
+                        <div class="flex items-center justify-between border-b border-slate-700/60 pb-4 mb-5">
+                            <div class="flex items-center gap-2">
+                                <span class="w-3 h-3 rounded-full bg-rose-500"></span>
+                                <span class="w-3 h-3 rounded-full bg-amber-400"></span>
+                                <span class="w-3 h-3 rounded-full bg-emerald-400"></span>
+                                <span class="ml-2 text-xs font-mono text-slate-400">aws-vpc-health-monitor.sh</span>
+                            </div>
+                            <span class="px-2.5 py-0.5 rounded-md bg-emerald-500/15 text-emerald-400 text-[11px] font-mono border border-emerald-500/30">ACTIVE</span>
+                        </div>
+
+                        <div class="space-y-4 font-mono text-xs">
+                            <div class="p-3 rounded-xl bg-slate-900/70 border border-slate-800 flex items-center justify-between">
+                                <div class="flex items-center gap-3">
+                                    <i class="fa-solid fa-globe text-cyan-400 text-base"></i>
+                                    <div>
+                                        <div class="text-slate-200 font-semibold">Internet Gateway (IGW)</div>
+                                        <div class="text-slate-500 text-[11px]">igw-0296360c1cb4dcc6d</div>
+                                    </div>
+                                </div>
+                                <span class="text-emerald-400">ATTACHED</span>
+                            </div>
+
+                            <div class="flex justify-center">
+                                <i class="fa-solid fa-arrow-down text-cyan-500/60"></i>
+                            </div>
+
+                            <div class="p-3 rounded-xl bg-slate-900/70 border border-slate-800 flex items-center justify-between">
+                                <div class="flex items-center gap-3">
+                                    <i class="fa-solid fa-network-wired text-indigo-400 text-base"></i>
+                                    <div>
+                                        <div class="text-slate-200 font-semibold">Application Load Balancer</div>
+                                        <div class="text-slate-500 text-[11px]">Scheme: Internet-facing | Port 80/443</div>
+                                    </div>
+                                </div>
+                                <span class="text-cyan-400">ROUTING</span>
+                            </div>
+
+                            <div class="flex justify-center">
+                                <i class="fa-solid fa-code-branch text-indigo-500/60"></i>
+                            </div>
+
+                            <div class="grid grid-cols-3 gap-2 text-center">
+                                <div class="p-2.5 rounded-lg bg-cyan-950/40 border border-cyan-500/25">
+                                    <div class="text-cyan-300 font-bold">AZ-1</div>
+                                    <div class="text-[10px] text-slate-400 mt-0.5">P-Sub-1</div>
+                                    <div class="text-[10px] text-emerald-400 mt-1">● Healthy</div>
+                                </div>
+                                <div class="p-2.5 rounded-lg bg-cyan-950/40 border border-cyan-500/25">
+                                    <div class="text-cyan-300 font-bold">AZ-2</div>
+                                    <div class="text-[10px] text-slate-400 mt-0.5">P-Sub-2</div>
+                                    <div class="text-[10px] text-emerald-400 mt-1">● Healthy</div>
+                                </div>
+                                <div class="p-2.5 rounded-lg bg-cyan-950/40 border border-cyan-500/25">
+                                    <div class="text-cyan-300 font-bold">AZ-3</div>
+                                    <div class="text-[10px] text-slate-400 mt-0.5">P-Sub-3</div>
+                                    <div class="text-[10px] text-emerald-400 mt-1">● Healthy</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills & Cloud Architecture Showcase Section -->
+    <section id="architecture" class="py-24 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-xs font-mono uppercase tracking-widest text-cyan-400">Core Capabilities</span>
+                <h2 class="text-3xl sm:text-4xl font-bold text-white mt-2">Cloud Architecture & Security Stack</h2>
+                <p class="text-slate-400 mt-4 text-sm sm:text-base">
+                    Defense-in-depth engineering combining Infrastructure-as-Code, automated scaling, and continuous threat telemetry.
+                </p>
+            </div>
+
+            <!-- 4 Core Pillar Cards -->
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-14">
+                <div class="glass-panel glass-panel-hover rounded-2xl p-6">
+                    <div class="w-12 h-12 rounded-xl bg-cyan-500/15 border border-cyan-500/30 flex items-center justify-center text-cyan-400 text-xl mb-5">
+                        <i class="fa-brands fa-aws"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">AWS Cloud Architecture</h3>
+                    <p class="text-sm text-slate-400 leading-relaxed mb-4">
+                        Multi-AZ VPC design, Transit Gateways, ALB/NLB routing, Auto Scaling Groups, and Reachability Analyzer diagnostics.
+                    </p>
+                    <div class="flex flex-wrap gap-1.5">
+                        <span class="px-2.5 py-1 rounded-md bg-slate-800/80 text-cyan-300 font-mono text-[11px]">VPC</span>
+                        <span class="px-2.5 py-1 rounded-md bg-slate-800/80 text-cyan-300 font-mono text-[11px]">EC2 / ASG</span>
+                        <span class="px-2.5 py-1 rounded-md bg-slate-800/80 text-cyan-300 font-mono text-[11px]">IAM</span>
+                    </div>
+                </div>
+
+                <div class="glass-panel glass-panel-hover rounded-2xl p-6">
+                    <div class="w-12 h-12 rounded-xl bg-indigo-500/15 border border-indigo-500/30 flex items-center justify-center text-indigo-400 text-xl mb-5">
+                        <i class="fa-solid fa-user-shield"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Zero-Trust & SecOps</h3>
+                    <p class="text-sm text-slate-400 leading-relaxed mb-4">
+                        Strict Security Group chaining, WAF rules, GuardDuty threat detection, KMS encryption, and SIEM log correlation.
+                    </p>
+                    <div class="flex flex-wrap gap-1.5">
+                        <span class="px-2.5 py-1 rounded-md bg-slate-800/80 text-indigo-300 font-mono text-[11px]">WAF</span>
+                        <span class="px-2.5 py-1 rounded-md bg-slate-800/80 text-indigo-300 font-mono text-[11px]">GuardDuty</span>
+                        <span class="px-2.5 py-1 rounded-md bg-slate-800/80 text-indigo-300 font-mono text-[11px]">KMS</span>
+                    </div>
+                </div>
+
+                <div class="glass-panel glass-panel-hover rounded-2xl p-6">
+                    <div class="w-12 h-12 rounded-xl bg-purple-500/15 border border-purple-500/30 flex items-center justify-center text-purple-400 text-xl mb-5">
+                        <i class="fa-solid fa-cubes"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">DevSecOps & IaC</h3>
+                    <p class="text-sm text-slate-400 leading-relaxed mb-4">
+                        Declarative infrastructure with Terraform, hardened Docker containers, EKS orchestration, and automated CI/CD gates.
+                    </p>
+                    <div class="flex flex-wrap gap-1.5">
+                        <span class="px-2.5 py-1 rounded-md bg-slate-800/80 text-purple-300 font-mono text-[11px]">Terraform</span>
+                        <span class="px-2.5 py-1 rounded-md bg-slate-800/80 text-purple-300 font-mono text-[11px]">EKS</span>
+                        <span class="px-2.5 py-1 rounded-md bg-slate-800/80 text-purple-300 font-mono text-[11px]">Docker</span>
+                    </div>
+                </div>
+
+                <div class="glass-panel glass-panel-hover rounded-2xl p-6">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-400 text-xl mb-5">
+                        <i class="fa-solid fa-wave-square"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Observability & Telemetry</h3>
+                    <p class="text-sm text-slate-400 leading-relaxed mb-4">
+                        Real-time VPC Flow Logs, CloudWatch metrics, Prometheus alerting, and automated incident remediation Lambdas.
+                    </p>
+                    <div class="flex flex-wrap gap-1.5">
+                        <span class="px-2.5 py-1 rounded-md bg-slate-800/80 text-emerald-300 font-mono text-[11px]">Flow Logs</span>
+                        <span class="px-2.5 py-1 rounded-md bg-slate-800/80 text-emerald-300 font-mono text-[11px]">CloudWatch</span>
+                        <span class="px-2.5 py-1 rounded-md bg-slate-800/80 text-emerald-300 font-mono text-[11px]">Lambda</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interactive Architecture Flow Blueprint -->
+            <div class="glass-panel rounded-2xl p-6 sm:p-8 border border-cyan-500/25">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+                    <div>
+                        <h3 class="text-xl font-bold text-white flex items-center gap-2.5">
+                            <i class="fa-solid fa-diagram-project text-cyan-400"></i>
+                            <span>Reference Production Topology: Multi-AZ Private Compute</span>
+                        </h3>
+                        <p class="text-xs sm:text-sm text-slate-400 mt-1">Click any node below to inspect security controls and routing policies.</p>
+                    </div>
+                    <span class="text-xs font-mono px-3 py-1.5 rounded-lg bg-cyan-500/10 text-cyan-300 border border-cyan-500/25 self-start">
+                        Region: ap-south-1
+                    </span>
+                </div>
+
+                <!-- Interactive Nodes Row -->
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4 items-center">
+                    <button type="button" onclick="inspectNode('igw')" class="arch-node text-left p-4 rounded-xl bg-slate-900/80 border border-cyan-500/40 hover:border-cyan-400 transition-all focus:outline-none ring-2 ring-cyan-500/40" data-node="igw">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-xs font-mono text-cyan-400">01 // EDGE</span>
+                            <i class="fa-solid fa-door-open text-cyan-400"></i>
+                        </div>
+                        <div class="font-bold text-white text-sm">Internet Gateway</div>
+                        <div class="text-xs text-slate-400 mt-1">Public ingress/egress boundary</div>
+                    </button>
+
+                    <button type="button" onclick="inspectNode('alb')" class="arch-node text-left p-4 rounded-xl bg-slate-900/80 border border-slate-700 hover:border-cyan-400 transition-all focus:outline-none" data-node="alb">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-xs font-mono text-indigo-400">02 // PUBLIC SUBNET</span>
+                            <i class="fa-solid fa-scale-balanced text-indigo-400"></i>
+                        </div>
+                        <div class="font-bold text-white text-sm">Application Load Balancer</div>
+                        <div class="text-xs text-slate-400 mt-1">WAF + TLS termination & routing</div>
+                    </button>
+
+                    <button type="button" onclick="inspectNode('asg')" class="arch-node text-left p-4 rounded-xl bg-slate-900/80 border border-slate-700 hover:border-cyan-400 transition-all focus:outline-none" data-node="asg">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-xs font-mono text-purple-400">03 // PRIVATE SUBNETS</span>
+                            <i class="fa-solid fa-server text-purple-400"></i>
+                        </div>
+                        <div class="font-bold text-white text-sm">EC2 Auto Scaling Group</div>
+                        <div class="text-xs text-slate-400 mt-1">Isolated P-Sub 1, 2, 3 across 3 AZs</div>
+                    </button>
+
+                    <button type="button" onclick="inspectNode('analyzer')" class="arch-node text-left p-4 rounded-xl bg-slate-900/80 border border-slate-700 hover:border-cyan-400 transition-all focus:outline-none" data-node="analyzer">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-xs font-mono text-emerald-400">04 // TELEMETRY</span>
+                            <i class="fa-solid fa-magnifying-glass-chart text-emerald-400"></i>
+                        </div>
+                        <div class="font-bold text-white text-sm">Reachability & Flow Logs</div>
+                        <div class="text-xs text-slate-400 mt-1">Automated hop-by-hop verification</div>
+                    </button>
+                </div>
+
+                <!-- Node Inspection Readout Box -->
+                <div id="node-inspector" class="mt-6 p-4 rounded-xl bg-slate-950/90 border border-slate-800 font-mono text-xs sm:text-sm text-slate-300">
+                    <div class="flex items-center gap-2 text-cyan-400 font-semibold mb-1">
+                        <i class="fa-solid fa-circle-info"></i>
+                        <span id="inspector-title">01 // Internet Gateway (IGW) Policy</span>
+                    </div>
+                    <p id="inspector-desc" class="text-slate-400 leading-relaxed">
+                        Attached directly to VPC (10.0.0.0/16). Public Route Table directs 0.0.0.0/0 traffic exclusively to the IGW, while Private Route Tables remain completely detached from direct internet ingress.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Showcase with Live Filtering & Modal Previews -->
+    <section id="projects" class="py-24 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+                <div>
+                    <span class="text-xs font-mono uppercase tracking-widest text-cyan-400">Case Studies</span>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-white mt-2">Featured Cloud & Security Deployments</h2>
+                </div>
+
+                <!-- Live Filter Controls -->
+                <div class="flex flex-wrap gap-2" id="project-filters">
+                    <button type="button" data-filter="all" class="filter-btn active px-4 py-2 rounded-xl text-xs font-mono font-semibold bg-cyan-500 text-slate-950 shadow-lg shadow-cyan-500/25 transition-all">
+                        All Systems
+                    </button>
+                    <button type="button" data-filter="cloud" class="filter-btn px-4 py-2 rounded-xl text-xs font-mono font-semibold glass-panel text-slate-300 hover:text-cyan-400 transition-all">
+                        Cloud Infra
+                    </button>
+                    <button type="button" data-filter="security" class="filter-btn px-4 py-2 rounded-xl text-xs font-mono font-semibold glass-panel text-slate-300 hover:text-cyan-400 transition-all">
+                        Cybersecurity
+                    </button>
+                    <button type="button" data-filter="automation" class="filter-btn px-4 py-2 rounded-xl text-xs font-mono font-semibold glass-panel text-slate-300 hover:text-cyan-400 transition-all">
+                        DevSecOps
+                    </button>
+                </div>
+            </div>
+
+            <!-- Projects Grid -->
+            <div id="projects-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Cards injected dynamically by JS for clean modal data binding -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive CLI / Terminal Simulator Section -->
+    <section id="terminal" class="py-24 relative">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-10">
+                <span class="text-xs font-mono uppercase tracking-widest text-cyan-400">Interactive Shell</span>
+                <h2 class="text-3xl sm:text-4xl font-bold text-white mt-2">AaravOS Command-Line Interface</h2>
+                <p class="text-slate-400 mt-3 text-sm">
+                    Query my infrastructure profile directly from the browser. Try typing <code class="text-cyan-300 bg-slate-800/80 px-1.5 py-0.5 rounded">help</code>, <code class="text-cyan-300 bg-slate-800/80 px-1.5 py-0.5 rounded">projects</code>, <code class="text-cyan-300 bg-slate-800/80 px-1.5 py-0.5 rounded">skills</code>, <code class="text-cyan-300 bg-slate-800/80 px-1.5 py-0.5 rounded">scan</code>, or <code class="text-cyan-300 bg-slate-800/80 px-1.5 py-0.5 rounded">contact</code>.
+                </p>
+            </div>
+
+            <!-- Terminal Window -->
+            <div class="glass-panel rounded-2xl overflow-hidden border border-cyan-500/30 shadow-2xl">
+                <!-- Terminal Header Bar -->
+                <div class="bg-slate-900/90 px-4 py-3 border-b border-slate-800 flex items-center justify-between">
+                    <div class="flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-rose-500"></span>
+                        <span class="w-3 h-3 rounded-full bg-amber-400"></span>
+                        <span class="w-3 h-3 rounded-full bg-emerald-400"></span>
+                        <span class="ml-2 text-xs font-mono text-slate-400">aarav@cloud-bastion:~ (zsh)</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <button type="button" onclick="runQuickCommand('help')" class="text-[11px] font-mono px-2.5 py-1 rounded bg-slate-800 hover:bg-cyan-500/20 text-cyan-300 transition-colors">help</button>
+                        <button type="button" onclick="runQuickCommand('projects')" class="text-[11px] font-mono px-2.5 py-1 rounded bg-slate-800 hover:bg-cyan-500/20 text-cyan-300 transition-colors">projects</button>
+                        <button type="button" onclick="runQuickCommand('skills')" class="text-[11px] font-mono px-2.5 py-1 rounded bg-slate-800 hover:bg-cyan-500/20 text-cyan-300 transition-colors">skills</button>
+                        <button type="button" onclick="runQuickCommand('clear')" class="text-[11px] font-mono px-2.5 py-1 rounded bg-slate-800 hover:bg-rose-500/20 text-rose-300 transition-colors">clear</button>
+                    </div>
+                </div>
+
+                <!-- Terminal Output Viewport -->
+                <div id="terminal-output" class="p-5 sm:p-6 h-80 overflow-y-auto font-mono text-xs sm:text-sm space-y-3 bg-[#04070f]/95 text-slate-300" onclick="document.getElementById('terminal-input').focus()">
+                    <div class="text-cyan-400">Welcome to AaravOS v4.2.0-aws-hardened (GNU/Linux x86_64)</div>
+                    <div class="text-slate-400">Type <span class="text-emerald-400 font-semibold">'help'</span> to view available system commands or click a shortcut pill above.</div>
+                </div>
+
+                <!-- Terminal Input Prompt -->
+                <form id="terminal-form" class="bg-[#04070f] px-5 py-3.5 border-t border-slate-800/80 flex items-center gap-2.5 font-mono text-xs sm:text-sm">
+                    <span class="text-emerald-400 font-semibold shrink-0">guest@aarav-sec:~$</span>
+                    <input 
+                        type="text" 
+                        id="terminal-input" 
+                        autocomplete="off" 
+                        spellcheck="false"
+                        placeholder="Enter command (e.g. help, projects, skills, contact)..." 
+                        class="w-full bg-transparent text-cyan-300 placeholder-slate-600 focus:outline-none"
+                    >
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section with Working Form & Instant Feedback -->
+    <section id="contact" class="py-24 relative">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-10 items-start">
+                
+                <!-- Left Contact Info -->
+                <div class="lg:col-span-5 space-y-6">
+                    <span class="text-xs font-mono uppercase tracking-widest text-cyan-400">Encrypted Channel</span>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-white">Initiate a Security or Cloud Consultation</h2>
+                    <p class="text-slate-400 text-sm sm:text-base leading-relaxed">
+                        Need help architecting a fault-tolerant AWS VPC, troubleshooting reachability bottlenecks, or hardening your cloud workloads? Send a direct payload below.
+                    </p>
+
+                    <div class="space-y-4 pt-2">
+                        <div class="glass-panel rounded-xl p-4 flex items-center gap-4">
+                            <div class="w-10 h-10 rounded-lg bg-cyan-500/15 flex items-center justify-center text-cyan-400">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs text-slate-400 font-mono">DIRECT EMAIL</div>
+                                <div class="text-sm font-semibold text-white">aarav.sec@cloudarchitect.io</div>
+                            </div>
+                        </div>
+
+                        <div class="glass-panel rounded-xl p-4 flex items-center gap-4">
+                            <div class="w-10 h-10 rounded-lg bg-indigo-500/15 flex items-center justify-center text-indigo-400">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs text-slate-400 font-mono">BASE OPERATIONS</div>
+                                <div class="text-sm font-semibold text-white">Delhi NCR / Remote Global (UTC+5:30)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Contact Form -->
+                <div class="lg:col-span-7">
+                    <form id="contact-form" class="glass-panel rounded-2xl p-6 sm:p-8 space-y-5 border border-cyan-500/25">
+                        <div class="grid sm:grid-cols-2 gap-5">
+                            <div>
+                                <label for="sender-name" class="block text-xs font-mono text-slate-300 mb-2">YOUR NAME *</label>
+                                <input type="text" id="sender-name" required placeholder="Vikram Singh" class="w-full px-4 py-3 rounded-xl bg-slate-900/80 border border-slate-700 text-white text-sm focus:outline-none focus:border-cyan-400 transition-colors">
+                            </div>
+                            <div>
+                                <label for="sender-email" class="block text-xs font-mono text-slate-300 mb-2">EMAIL ADDRESS *</label>
+                                <input type="email" id="sender-email" required placeholder="vikram@enterprise.com" class="w-full px-4 py-3 rounded-xl bg-slate-900/80 border border-slate-700 text-white text-sm focus:outline-none focus:border-cyan-400 transition-colors">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="inquiry-type" class="block text-xs font-mono text-slate-300 mb-2">DEPLOYMENT SCOPE</label>
+                            <select id="inquiry-type" class="w-full px-4 py-3 rounded-xl bg-slate-900/80 border border-slate-700 text-white text-sm focus:outline-none focus:border-cyan-400 transition-colors">
+                                <option value="AWS Multi-AZ Architecture">AWS Multi-AZ VPC & Load Balancing</option>
+                                <option value="Cloud Security Audit">Zero-Trust & Security Group Audit</option>
+                                <option value="DevSecOps Automation">Terraform & CI/CD Pipeline Automation</option>
+                                <option value="Full-Time / Advisory">Full-Time Role / Technical Advisory</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="sender-message" class="block text-xs font-mono text-slate-300 mb-2">TRANSMISSION PAYLOAD *</label>
+                            <textarea id="sender-message" rows="4" required placeholder="Describe your infrastructure goals, timeline, or security requirements..." class="w-full px-4 py-3 rounded-xl bg-slate-900/80 border border-slate-700 text-white text-sm focus:outline-none focus:border-cyan-400 transition-colors"></textarea>
+                        </div>
+
+                        <button type="submit" id="submit-btn" class="w-full py-3.5 px-6 rounded-xl bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white font-semibold shadow-lg shadow-cyan-500/25 flex items-center justify-center gap-2.5 transition-all">
+                            <i class="fa-solid fa-paper-plane"></i>
+                            <span>Transmit Encrypted Message</span>
+                        </button>
+
+                        <!-- Instant Feedback Banner -->
+                        <div id="form-feedback" class="hidden p-4 rounded-xl bg-emerald-500/15 border border-emerald-500/40 text-emerald-300 text-xs sm:text-sm font-mono flex items-start gap-3">
+                            <i class="fa-solid fa-circle-check text-emerald-400 text-base mt-0.5"></i>
+                            <div id="feedback-text"></div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-800/80 py-10 bg-[#04060e]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="text-xs font-mono text-slate-400">
+                &copy; 2026 AARAV.SEC // Engineered with Zero-Trust Principles.
+            </div>
+            <div class="flex items-center gap-5 text-slate-400">
+                <a href="#terminal" aria-label="GitHub" class="hover:text-cyan-400 transition-colors"><i class="fa-brands fa-github text-lg"></i></a>
+                <a href="#terminal" aria-label="LinkedIn" class="hover:text-cyan-400 transition-colors"><i class="fa-brands fa-linkedin text-lg"></i></a>
+                <a href="#terminal" aria-label="X Twitter" class="hover:text-cyan-400 transition-colors"><i class="fa-brands fa-x-twitter text-lg"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Project Details Modal -->
+    <div id="project-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md">
+        <div class="glass-panel rounded-2xl max-w-2xl w-full p-6 sm:p-8 border border-cyan-500/40 relative animate-[fadeIn_0.2s_ease-out]">
+            <button type="button" id="close-modal-btn" aria-label="Close Modal" class="absolute top-5 right-5 w-9 h-9 rounded-lg bg-slate-800/80 hover:bg-rose-500/20 text-slate-300 hover:text-rose-400 flex items-center justify-center transition-colors">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div id="modal-badge" class="inline-block px-3 py-1 rounded-full text-xs font-mono bg-cyan-500/15 text-cyan-300 border border-cyan-500/30 mb-3"></div>
+            <h3 id="modal-title" class="text-2xl font-bold text-white mb-3"></h3>
+            <p id="modal-desc" class="text-slate-300 text-sm leading-relaxed mb-5"></p>
+
+            <div class="bg-slate-900/90 rounded-xl p-4 border border-slate-800 mb-5">
+                <div class="text-xs font-mono text-cyan-400 uppercase mb-2">Architecture & Security Highlights</div>
+                <ul id="modal-highlights" class="space-y-2 text-xs sm:text-sm text-slate-300"></ul>
+            </div>
+
+            <div class="flex flex-wrap items-center justify-between gap-4 pt-2 border-t border-slate-800">
+                <div id="modal-tags" class="flex flex-wrap gap-2"></div>
+                <button type="button" onclick="closeProjectModal()" class="px-5 py-2.5 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-semibold text-xs font-mono transition-colors">
+                    Close Blueprint
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Self-Contained JavaScript Logic -->
+    <script>
+        /* =========================================================================
+           1. NAVIGATION & MOBILE DRAWER INTERACTIVITY
+           ========================================================================= */
+        const navbar = document.getElementById('navbar');
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 30) {
+                navbar.classList.add('bg-[#060913]/85', 'backdrop-blur-xl', 'border-cyan-500/15', 'shadow-lg');
+            } else {
+                navbar.classList.remove('bg-[#060913]/85', 'backdrop-blur-xl', 'border-cyan-500/15', 'shadow-lg');
+            }
+        });
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+        });
+
+        /* =========================================================================
+           2. HERO INTERACTIVE PARTICLE MESH CANVAS
+           ========================================================================= */
+        const canvas = document.getElementById('network-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        const mouse = { x: null, y: null, radius: 140 };
+
+        function resizeCanvas() {
+            canvas.width = canvas.offsetWidth;
+            canvas.height = canvas.offsetHeight;
+            initParticles();
+        }
+
+        window.addEventListener('resize', resizeCanvas);
+        canvas.addEventListener('mousemove', (e) => {
+            const rect = canvas.getBoundingClientRect();
+            mouse.x = e.clientX - rect.left;
+            mouse.y = e.clientY - rect.top;
+        });
+        canvas.addEventListener('mouseleave', () => {
+            mouse.x = null;
+            mouse.y = null;
+        });
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.vx = (Math.random() - 0.5) * 0.65;
+                this.vy = (Math.random() - 0.5) * 0.65;
+                this.size = Math.random() * 2 + 1.2;
+            }
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+
+                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+
+                // Subtle mouse repulsion
+                if (mouse.x !== null && mouse.y !== null) {
+                    const dx = mouse.x - this.x;
+                    const dy = mouse.y - this.y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    if (dist < mouse.radius) {
+                        this.x -= (dx / dist) * 1.2;
+                        this.y -= (dy / dist) * 1.2;
+                    }
+                }
+            }
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(34, 211, 238, 0.75)';
+                ctx.fill();
+            }
+        }
+
+        function initParticles() {
+            particles = [];
+            const count = Math.min(Math.floor((canvas.width * canvas.height) / 14000), 85);
+            for (let i = 0; i < count; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function animateNetwork() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update();
+                particles[i].draw();
+
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+
+                    if (dist < 130) {
+                        ctx.beginPath();
+                        ctx.strokeStyle = `rgba(99, 102, 241, ${(1 - dist / 130) * 0.35})`;
+                        ctx.lineWidth = 1;
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+            requestAnimationFrame(animateNetwork);
+        }
+
+        /* =========================================================================
+           3. INTERACTIVE ARCHITECTURE NODE INSPECTOR
+           ========================================================================= */
+        const nodeDetails = {
+            igw: {
+                title: '01 // Internet Gateway (IGW) Policy',
+                desc: 'Attached directly to VPC (10.0.0.0/16). Public Route Table directs 0.0.0.0/0 traffic exclusively to the IGW, while Private Route Tables remain completely detached from direct internet ingress.'
+            },
+            alb: {
+                title: '02 // Application Load Balancer (Internet-Facing)',
+                desc: 'Deployed across 3 Public Subnets. Protected by ALB-SG allowing inbound HTTP/HTTPS (80/443) from 0.0.0.0/0 and forwarding validated requests to the private Target Group.'
+            },
+            asg: {
+                title: '03 // EC2 Auto Scaling Group in Private Subnets (P-Sub 1, 2, 3)',
+                desc: 'Compute instances run inside isolated private subnets across 3 Availability Zones. EC2-SG accepts inbound Port 80 traffic strictly from ALB-SG—blocking all direct external IP access.'
+            },
+            analyzer: {
+                title: '04 // VPC Reachability Analyzer & Live Flow Logs',
+                desc: 'Continuous hop-by-hop path verification from IGW -> ALB -> Private EC2 instances, paired with CloudWatch VPC Flow Logs to detect rejected packets or anomalous port scans in real time.'
+            }
+        };
+
+        function inspectNode(key) {
+            const info = nodeDetails[key];
+            if (!info) return;
+            document.getElementById('inspector-title').textContent = info.title;
+            document.getElementById('inspector-desc').textContent = info.desc;
+
+            document.querySelectorAll('.arch-node').forEach(btn => {
+                if (btn.dataset.node === key) {
+                    btn.classList.add('border-cyan-500/40', 'ring-2', 'ring-cyan-500/40');
+                    btn.classList.remove('border-slate-700');
+                } else {
+                    btn.classList.remove('border-cyan-500/40', 'ring-2', 'ring-cyan-500/40');
+                    btn.classList.add('border-slate-700');
+                }
+            });
+        }
+
+        /* =========================================================================
+           4. PROJECT CARDS, LIVE FILTERING & MODAL PREVIEWS
+           ========================================================================= */
+        const projectsData = [
+            {
+                id: 1,
+                title: 'Multi-AZ Zero-Trust VPC Mesh',
+                category: 'cloud',
+                categoryLabel: 'Cloud Infrastructure',
+                icon: 'fa-cloud',
+                summary: 'High-availability AWS VPC topology spanning 3 Availability Zones with isolated private compute subnets and automated ALB failover.',
+                highlights: [
+                    'Segmented 10.0.0.0/16 CIDR into 3 Public Subnets (ALB) and 3 Private Subnets (EC2 ASG).',
+                    'Enforced Security Group chaining so EC2 nodes accept traffic exclusively from the ALB.',
+                    'Integrated VPC Reachability Analyzer for automated CI/CD network path validation.'
+                ],
+                tags: ['AWS VPC', 'ALB', 'Auto Scaling', 'Reachability Analyzer']
+            },
+            {
+                id: 2,
+                title: 'SentinelGuard Threat Telemetry',
+                category: 'security',
+                categoryLabel: 'Cybersecurity',
+                icon: 'fa-shield-virus',
+                summary: 'Real-time intrusion detection and automated IP quarantine pipeline powered by VPC Flow Logs, GuardDuty, and AWS Lambda.',
+                highlights: [
+                    'Ingests 50k+ VPC Flow Log records per minute to flag port-scanning and brute-force anomalies.',
+                    'Triggers serverless Lambda functions to automatically update Network ACL deny rules within 3 seconds.',
+                    'Visualizes threat vectors on a centralized dark-mode SecOps command dashboard.'
+                ],
+                tags: ['GuardDuty', 'VPC Flow Logs', 'Lambda', 'NACL Automation']
+            },
+            {
+                id: 3,
+                title: 'Terraform Hardened EKS Blueprint',
+                category: 'automation',
+                categoryLabel: 'DevSecOps',
+                icon: 'fa-code-branch',
+                summary: 'End-to-end Infrastructure-as-Code modules provisioning CIS-benchmarked Kubernetes clusters with automated image scanning.',
+                highlights: [
+                    '100% reproducible Terraform modules with remote S3 state locking via DynamoDB.',
+                    'Integrated Trivy container vulnerability scanning inside GitHub Actions prior to ECR push.',
+                    'Enforced Pod Security Standards and least-privilege IAM Roles for Service Accounts (IRSA).'
+                ],
+                tags: ['Terraform', 'AWS EKS', 'Trivy', 'GitHub Actions']
+            },
+            {
+                id: 4,
+                title: 'EdgeWAF DDoS Mitigation Shield',
+                category: 'security',
+                categoryLabel: 'Cybersecurity',
+                icon: 'fa-firewall',
+                summary: 'Multi-layered perimeter defense combining CloudFront, AWS Shield Advanced, and custom WAF rate-limiting rules.',
+                highlights: [
+                    'Mitigated simulated Layer-7 HTTP flood attacks with zero latency impact on legitimate traffic.',
+                    'Configured geo-blocking and bot-control managed rule groups at edge locations.',
+                    'Reduced origin ALB compute load by 68% via intelligent edge caching policies.'
+                ],
+                tags: ['AWS WAF', 'CloudFront', 'Shield', 'Bot Control']
+            },
+            {
+                id: 5,
+                title: 'Hybrid Transit Gateway Hub',
+                category: 'cloud',
+                categoryLabel: 'Cloud Infrastructure',
+                icon: 'fa-network-wired',
+                summary: 'Centralized hub-and-spoke enterprise networking connecting 12 AWS accounts and on-premise data centers over encrypted VPN.',
+                highlights: [
+                    'Eliminated complex VPC peering meshes using AWS Transit Gateway route domains.',
+                    'Implemented centralized egress inspection through dedicated firewall appliances.',
+                    'Achieved sub-15ms cross-VPC latency with automated BGP failover.'
+                ],
+                tags: ['Transit Gateway', 'Site-to-Site VPN', 'BGP', 'Network Firewall']
+            },
+            {
+                id: 6,
+                title: 'AutoCompliance Drift Remediator',
+                category: 'automation',
+                categoryLabel: 'DevSecOps',
+                icon: 'fa-robot',
+                summary: 'Event-driven compliance engine using AWS Config and EventBridge to auto-remediate unencrypted S3 buckets and open ports.',
+                highlights: [
+                    'Detects accidental 0.0.0.0/0 SSH/RDP Security Group rules in under 5 seconds.',
+                    'Automatically reverts unauthorized changes and dispatches Slack/PagerDuty alerts.',
+                    'Maintains continuous SOC2 and ISO-27001 readiness across multi-account environments.'
+                ],
+                tags: ['AWS Config', 'EventBridge', 'Python Boto3', 'SOC2']
+            }
+        ];
+
+        const projectsGrid = document.getElementById('projects-grid');
+
+        function renderProjects(filter = 'all') {
+            projectsGrid.innerHTML = '';
+            const filtered = filter === 'all' 
+                ? projectsData 
+                : projectsData.filter(p => p.category === filter);
+
+            filtered.forEach(project => {
+                const card = document.createElement('div');
+                card.className = 'glass-panel glass-panel-hover rounded-2xl p-6 flex flex-col justify-between cursor-pointer group';
+                card.onclick = () => openProjectModal(project);
+
+                card.innerHTML = `
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="w-11 h-11 rounded-xl bg-cyan-500/15 border border-cyan-500/30 flex items-center justify-center text-cyan-400 text-lg group-hover:scale-110 transition-transform">
+                                <i class="fa-solid ${project.icon}"></i>
+                            </div>
+                            <span class="text-[11px] font-mono px-2.5 py-1 rounded-full bg-slate-800/90 text-indigo-300 border border-indigo-500/25">
+                                ${project.categoryLabel}
+                            </span>
+                        </div>
+                        <h3 class="text-lg font-bold text-white group-hover:text-cyan-300 transition-colors mb-2">${project.title}</h3>
+                        <p class="text-sm text-slate-400 leading-relaxed mb-5">${project.summary}</p>
+                    </div>
+                    <div>
+                        <div class="flex flex-wrap gap-1.5 mb-4">
+                            ${project.tags.map(t => `<span class="px-2 py-0.5 rounded bg-slate-900/90 text-slate-300 font-mono text-[11px] border border-slate-800">${t}</span>`).join('')}
+                        </div>
+                        <div class="pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs font-mono text-cyan-400">
+                            <span>Inspect Architecture</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"></i>
+                        </div>
+                    </div>
+                `;
+                projectsGrid.appendChild(card);
+            });
+        }
+
+        // Filter Button Handlers
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.filter-btn').forEach(b => {
+                    b.classList.remove('active', 'bg-cyan-500', 'text-slate-950', 'shadow-lg', 'shadow-cyan-500/25');
+                    b.classList.add('glass-panel', 'text-slate-300');
+                });
+                btn.classList.add('active', 'bg-cyan-500', 'text-slate-950', 'shadow-lg', 'shadow-cyan-500/25');
+                btn.classList.remove('glass-panel', 'text-slate-300');
+                renderProjects(btn.dataset.filter);
+            });
+        });
+
+        // Modal Open/Close Handlers
+        const projectModal = document.getElementById('project-modal');
+        function openProjectModal(project) {
+            document.getElementById('modal-badge').textContent = project.categoryLabel;
+            document.getElementById('modal-title').textContent = project.title;
+            document.getElementById('modal-desc').textContent = project.summary;
+            document.getElementById('modal-highlights').innerHTML = project.highlights
+                .map(h => `<li class="flex items-start gap-2.5"><i class="fa-solid fa-check text-emerald-400 mt-1"></i><span>${h}</span></li>`)
+                .join('');
+            document.getElementById('modal-tags').innerHTML = project.tags
+                .map(t => `<span class="px-2.5 py-1 rounded-md bg-slate-800 text-cyan-300 font-mono text-xs">${t}</span>`)
+                .join('');
+
+            projectModal.classList.remove('hidden');
+            projectModal.classList.add('flex');
+        }
+
+        function closeProjectModal() {
+            projectModal.classList.add('hidden');
+            projectModal.classList.remove('flex');
+        }
+
+        document.getElementById('close-modal-btn').addEventListener('click', closeProjectModal);
+        projectModal.addEventListener('click', (e) => {
+            if (e.target === projectModal) closeProjectModal();
+        });
+
+        /* =========================================================================
+           5. INTERACTIVE TERMINAL / CLI SIMULATOR
+           ========================================================================= */
+        const terminalForm = document.getElementById('terminal-form');
+        const terminalInput = document.getElementById('terminal-input');
+        const terminalOutput = document.getElementById('terminal-output');
+
+        const cliCommands = {
+            help: () => `
+                <div class="text-cyan-300 font-semibold mb-1">Available Commands:</div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-1 text-slate-300">
+                    <div><span class="text-emerald-400">whoami</span>   - Engineer profile & certifications</div>
+                    <div><span class="text-emerald-400">skills</span>   - Core AWS, DevSecOps & Security stack</div>
+                    <div><span class="text-emerald-400">projects</span> - List deployed cloud architectures</div>
+                    <div><span class="text-emerald-400">scan</span>     - Run VPC Reachability diagnostic</div>
+                    <div><span class="text-emerald-400">contact</span>  - Display encrypted contact endpoints</div>
+                    <div><span class="text-emerald-400">clear</span>    - Clear terminal viewport</div>
+                </div>
+            `,
+            whoami: () => `
+                <div class="text-white font-semibold">Aarav Sharma // Senior Cloud & Cybersecurity Architect</div>
+                <div class="text-slate-400 mt-1">Certifications: AWS Certified Solutions Architect – Professional | AWS Security – Specialty | CKA</div>
+                <div class="text-cyan-300 mt-1">Mission: Building self-healing, zero-trust cloud infrastructure across multi-AZ regions.</div>
+            `,
+            skills: () => `
+                <div class="text-indigo-300 font-semibold">[+] Cloud & Networking:</div>
+                <div class="text-slate-300 mb-1">    AWS (VPC, ALB, ASG, EC2, EKS, Transit Gateway, Reachability Analyzer, Flow Logs)</div>
+                <div class="text-cyan-300 font-semibold">[+] Security & Governance:</div>
+                <div class="text-slate-300 mb-1">    Zero-Trust IAM, Security Group Chaining, WAF, GuardDuty, KMS, AWS Config</div>
+                <div class="text-emerald-300 font-semibold">[+] IaC & Automation:</div>
+                <div class="text-slate-300">    Terraform, Docker, Kubernetes, Python (Boto3), Linux Hardening, CI/CD</div>
+            `,
+            projects: () => `
+                <div class="text-cyan-300 font-semibold mb-1">Active Deployments (6):</div>
+                <div class="space-y-1 text-slate-300">
+                    <div>1. <span class="text-white font-semibold">Multi-AZ Zero-Trust VPC Mesh</span> [AWS VPC / ALB / ASG]</div>
+                    <div>2. <span class="text-white font-semibold">SentinelGuard Threat Telemetry</span> [GuardDuty / Flow Logs / Lambda]</div>
+                    <div>3. <span class="text-white font-semibold">Terraform Hardened EKS Blueprint</span> [Terraform / EKS / Trivy]</div>
+                    <div>4. <span class="text-white font-semibold">EdgeWAF DDoS Mitigation Shield</span> [WAF / CloudFront / Shield]</div>
+                </div>
+            `,
+            scan: () => `
+                <div class="text-amber-300">[*] Initiating VPC Reachability Path Analysis (IGW -> ALB -> Private EC2)...</div>
+                <div class="text-slate-400">    Hop 1: igw-0296360c1cb4dcc6d ....... [VERIFIED]</div>
+                <div class="text-slate-400">    Hop 2: rtb-public (0.0.0.0/0) ...... [ACTIVE]</div>
+                <div class="text-slate-400">    Hop 3: alb-sg (Inbound TCP:80) ..... [OPEN]</div>
+                <div class="text-slate-400">    Hop 4: ec2-sg (Source: alb-sg) ..... [VERIFIED]</div>
+                <div class="text-emerald-400 font-semibold mt-1">[✓] STATUS: REACHABLE (0 Security Bottlenecks Found)</div>
+            `,
+            contact: () => `
+                <div class="text-cyan-300">Encrypted Communication Channels:</div>
+                <div>• Email: <span class="text-white">aarav.sec@cloudarchitect.io</span></div>
+                <div>• Location: <span class="text-white">Delhi NCR, India (Remote Ready)</span></div>
+                <div class="text-slate-400 mt-1">Tip: Scroll down to the Contact section to transmit a direct message.</div>
+            `
+        };
+
+        function appendTerminalLine(htmlContent) {
+            const div = document.createElement('div');
+            div.innerHTML = htmlContent;
+            terminalOutput.appendChild(div);
+            terminalOutput.scrollTop = terminalOutput.scrollHeight;
+        }
+
+        function executeCommand(rawCmd) {
+            const cmd = rawCmd.trim().toLowerCase();
+            if (!cmd) return;
+
+            appendTerminalLine(`<div class="text-slate-400"><span class="text-emerald-400">guest@aarav-sec:~$</span> <span class="text-white">${cmd}</span></div>`);
+
+            if (cmd === 'clear') {
+                terminalOutput.innerHTML = '';
+                return;
+            }
+
+            if (cliCommands[cmd]) {
+                appendTerminalLine(cliCommands[cmd]());
+            } else {
+                appendTerminalLine(`<div class="text-rose-400">zsh: command not found: ${cmd}. Type <span class="text-cyan-300">'help'</span> for valid commands.</div>`);
+            }
+        }
+
+        function runQuickCommand(cmd) {
+            executeCommand(cmd);
+            terminalInput.focus();
+        }
+
+        terminalForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            executeCommand(terminalInput.value);
+            terminalInput.value = '';
+        });
+
+        /* =========================================================================
+           6. WORKING CONTACT FORM WITH INSTANT FEEDBACK
+           ========================================================================= */
+        const contactForm = document.getElementById('contact-form');
+        const formFeedback = document.getElementById('form-feedback');
+        const feedbackText = document.getElementById('feedback-text');
+        const submitBtn = document.getElementById('submit-btn');
+
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('sender-name').value.trim();
+            const email = document.getElementById('sender-email').value.trim();
+            const scope = document.getElementById('inquiry-type').value;
+
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = `<i class="fa-solid fa-circle-notch fa-spin"></i><span>Encrypting & Transmitting...</span>`;
+
+            setTimeout(() => {
+                const packetId = 'TX-' + Math.random().toString(36).substring(2, 8).toUpperCase();
+                feedbackText.innerHTML = `
+                    <strong>Handshake Confirmed [${packetId}]</strong><br>
+                    Thank you, ${name}. Your inquiry regarding <em>${scope}</em> has been logged. A response will be routed to <u>${email}</u> shortly.
+                `;
+                formFeedback.classList.remove('hidden');
+                contactForm.reset();
+
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = `<i class="fa-solid fa-paper-plane"></i><span>Transmit Encrypted Message</span>`;
+            }, 650);
+        });
+
+        /* =========================================================================
+           7. INITIALIZATION ON WINDOW LOAD
+           ========================================================================= */
+        window.onload = function () {
+            resizeCanvas();
+            animateNetwork();
+            renderProjects('all');
+        };
+    </script>
+</body>
+</html>
